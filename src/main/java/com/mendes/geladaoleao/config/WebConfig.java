@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -58,7 +59,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return engine;
 	}
 	private ITemplateResolver templateResolver() {
-		//SpringResoureTemplateResolver usado para resolver Templates 
+		//SpringResourceTemplateResolver usado para resolver Templates 
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		//
 		resolver.setApplicationContext(applicationContext);
@@ -70,5 +71,17 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		resolver.setTemplateMode(TemplateMode.HTML);
 		//
 		return resolver;
+	}
+	
+	//configurando o bootstrap: //
+	/* utilizando o mvc (spring), podemos usar o método 'addResourceHandlers' do webmvcconfigureadapter
+	 * que vai basicamente informar onde vai ser chamado o "bootstrap" ou seja os recursos
+	 * nesse caso informei no 'addResourceHandler' > "/**"
+	 * e no 'addResourceLocations' passei o "classpath" (src/main/resources) a pasta static
+	 * ou seja, ele vai buscar os recursos staticos na classpath static (aula 5.3)
+	 *  */
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
 }

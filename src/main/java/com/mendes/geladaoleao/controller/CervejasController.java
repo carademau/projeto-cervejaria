@@ -23,9 +23,8 @@ public class CervejasController {
 	 * (n precisa informar que eh html pois na webconfig ja defini como html)
 	 * */
 	@RequestMapping("/cervejas/novo")
-	public String novo() {
+	public String novo(Cerveja cerveja) {
 		return "cerveja/CadastroCerveja";
-		
 	}
 	/* novamente o requestmapping pra achar nosso metodo
 	 * passando o value 
@@ -41,15 +40,13 @@ public class CervejasController {
 	 *preciso  usar este RedirectAttributes pra quando o cadastro der certo*/
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes attr) {
 		if (result.hasErrors()) {
-			//pra poder exibir a msg de erro uso o objeto model passado no parametro do cadastrar
-			//e chamo o '.addAttribute' primeiro passando o nome que defini no th:span do html e após a mensagem em si
-			model.addAttribute("msg", "Erro no formulário!");
-			return "cerveja/CadastroCerveja";
+			return novo(cerveja);
 		}
 			//attr nome dado ao RedirectAttributes chamando o ".addFlashAttribute"
 			//pra poder permanecer a mensagem mesmo após o redirect retornado
 			attr.addFlashAttribute("msg", "Cerveja adicionada!");
 		System.out.println(">>>sku: " +cerveja.getSku());
 		return "redirect:/cervejas/novo";
-	}	
+	}
+	
 }
