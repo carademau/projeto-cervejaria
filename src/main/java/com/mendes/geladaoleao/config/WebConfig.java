@@ -19,6 +19,8 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.mendes.geladaoleao.controller.CervejasController;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @Configuration // pra definir como classe de configuraçao
 @ComponentScan(basePackageClasses = { CervejasController.class }) // componente scan para encontrar as classes
 @EnableWebMvc
@@ -55,7 +57,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		SpringTemplateEngine engine = new SpringTemplateEngine ();
 		engine.setEnableSpringELCompiler(true);
 		engine.setTemplateResolver(templateResolver());
+		//adicionando novo dialeto
 		
+		engine.addDialect(new LayoutDialect());
 		return engine;
 	}
 	private ITemplateResolver templateResolver() {
