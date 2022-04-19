@@ -1,5 +1,4 @@
 package com.mendes.geladaoleao.model;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
