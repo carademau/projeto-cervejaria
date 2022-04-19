@@ -18,11 +18,13 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.mendes.geladaoleao.controller.CervejasController;
+import com.mendes.geladaoleao.controller.ClientesController;
+import com.mendes.geladaoleao.controller.UsuariosController;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration // pra definir como classe de configuraçao
-@ComponentScan(basePackageClasses = { CervejasController.class }) // componente scan para encontrar as classes
+@ComponentScan(basePackageClasses = { CervejasController.class, ClientesController.class, UsuariosController.class}) // componente scan para encontrar as classes
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 	//
