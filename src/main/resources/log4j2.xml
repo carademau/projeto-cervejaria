@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="WARN">
+	<Appenders>
+		
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %logger{36}: %msg%n" />
+		</Console>
+	</Appenders>
+	
+	<Loggers>
+		<!-- aqui um exemplo chamando somente os controllers 
+			e deifindo o nivel da informação no log dos controllers como info
+		 	mesmo que no root esteja em error -->
+		<Logger name="com.mendes.geladaoleao.controller" level="debug"/>
+		
+		<!-- root definindo o nivel das informações no log pra 'error' em toda a aplicacao  -->
+		<Root level ="error">
+			<AppenderRef ref="Console"/>
+		</Root>
+	</Loggers>
+	
+</Configuration>

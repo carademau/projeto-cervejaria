@@ -13,7 +13,7 @@ import com.mendes.geladaoleao.model.Cerveja;
 
 @Controller
 public class CervejasController {
-
+	
 	/* Depois de configurar a VIEW no WebConfig
 	 * e definir o html no CadastroCerveja >
 	 * (caminho: src/main/resources > templates > cerveja > CadastroCerveja.html
